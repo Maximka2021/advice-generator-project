@@ -32,7 +32,6 @@ body{
 
 #random-advice{
     padding-top: 7px;
-    font-family: 'Lobster', cursive;
     font-size: 1.9em;
 }
 
@@ -54,6 +53,38 @@ body{
 
 #user-advice{
     padding-top: 7px;
-    font-family: 'Lobster', cursive;
     font-size: 1.9em;
+}
+
+.input-container{
+    text-align: center;
+    border-radius: 15px;
+    width: 40%;
+    height: 250px;
+    margin: auto;
+    background-color:#E69A8DFF;
+}
+
+.input{
+    height: 1.5rem;
+    margin: 3% 0%;
+    font-size: 1.2rem;
+}
+
+.advice-input{
+    resize: none;
+    font-size: 1rem;
+}
+
+.submit-btn{
+    padding: 2% 6%;
+    margin-top: 1%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.submit-btn:hover{
+    box-shadow: 4px 4px 1px black;
 }

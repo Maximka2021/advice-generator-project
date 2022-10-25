@@ -7,9 +7,6 @@
     <script defer src=".//script.js"></script>
     <link rel="stylesheet" href=".//style.css">
     <title>Advice Generator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1 class='title'>Advice Generator</h1>
@@ -21,12 +18,15 @@
         <h2 class="user-title">Advices created by users</h2>
         <p id="user-advice"></p>
     </div>
-    <form action="GET">
-        <label for="new-name-input">Name:</label>
-        <input type="text" id="new-name-input" required>
-        <label for="new-advice-input">Advice:</label>
-        <input type="text" id="new-advice-input" placeholder="New advice here" required>
-        <input type="submit" id="submit-advice"></input>
-    </form>
+    <div class="input-container">
+        <form action="GET">
+            <label for="new-name-input">Name:</label>
+            <input type="text" class='input' id="new-name-input" required>
+            <br>
+            <textarea class="advice-input" id="new-advcie-input" cols="55" rows="7" placeholder="Advice..." required    ></textarea>
+            <br>
+            <input type="submit" class='submit-btn' id="submit-advice"></input>
+        </form>
+    </div>
 </body>
 </html>
