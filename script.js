@@ -32,7 +32,6 @@ function createNewAdvice() {
     name: newNameInput.value,
     advice: newAdviceInput.value,
   };
-
   fetch("http://localhost:3000/new_advice", {
     method: "POST",
     headers: {
