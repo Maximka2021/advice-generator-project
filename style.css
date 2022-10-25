@@ -14,7 +14,7 @@ body{
     color:#E69A8DFF
 }
 
-.random-advice-container{
+/* .random-advice-container{
     text-align: center;
     width: 60%;
     height: 150px;
@@ -24,16 +24,16 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 15px;  
-}
+} */
 
 .random-title{
     padding-top: 35px;
 }
 
-#random-advice{
+/* #random-advice{
     padding-top: 7px;
     font-size: 1.9em;
-}
+} */
 
 .user-advice-container{
     text-align: center;
@@ -82,9 +82,10 @@ body{
     border: none;
     outline: none;
     cursor: pointer;
-    transition: .7s;
+    transition: .3s;
+    border-radius: 15px;
 }
 
 .submit-btn:hover{
-    box-shadow: 4px 4px 1px black;
+    box-shadow: 3px 3px 1px black;
 }
