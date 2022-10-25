@@ -2,50 +2,56 @@
 
 const userAdvice = document.querySelector("#user-advice");
 const newAdviceInput = document.querySelector("#new-advice-input");
+const quoteBtn = document.querySelector('#btn-quote');
 const newNameInput = document.querySelector("#new-name-input");
 const submitAdvice = document.querySelector("#submit-advice");
+const author = document.querySelector('#author');
 
-// fetch("https://api.adviceslip.com/advice")
-//   .then((r) => r.json())
-//   .then((data) => displayRandomAdvice(data));
+quoteBtn.addEventListener('click', displayInfo)
 
-fetch("http://localhost:3000/new_advice")
-  .then((r) => r.json())
-  .then((data) => displayUserAdvice(data));
 
-// function displayRandomAdvice(data) {
-//   randomAdvice.textContent = data.slip.advice;
-// }
+fetch('http://localhost:3000/new_advice')
+.then(r => r.json())
+.then(data => displayAdvice(data))
 
-function displayUserAdvice(data) {
-  arrayOfAdvices = data.map((item) => item.advice);
-  let randomAdvice =
-    arrayOfAdvices[Math.floor(Math.random() * arrayOfAdvices.length)];
+function displayInfo(){
+  fetch('http://localhost:3000/new_advice')
+  .then(r => r.json())
+  .then(data => displayAdvice(data))
+}
+
+function displayAdvice(data){
+  const adviceArray = data.map(elem => elem.advice);
+  const randomAdvice = adviceArray[Math.floor(Math.random()*adviceArray.length)];
   userAdvice.textContent = randomAdvice;
+
+  fetch(`http://localhost:3000/new_advice/?advice=${randomAdvice}`)
+  .then(r => r.json())
+  .then(data => data.forEach(elem => displayName(elem)))
 }
 
-submitAdvice.addEventListener("click", createNewAdvice);
+function displayName(elem){
+  author.textContent = `By ${elem.name}`;
+}
 
-function createNewAdvice(e) {
-  e.preventDefault()
+submitAdvice.addEventListener('click', saveAdvice)
 
-  arrayOfAdvices.forEach(elem => {
-    if(elem = newAdviceInput.value){
-      alert('Error')
-    }else{
-      const newData = {
-        name: newNameInput.value,
-        advice: newAdviceInput.value,
-      };
-    
-      fetch("http://localhost:3000/new_advice", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newData),
-      });
-    }
+function saveAdvice(e){
+  e.preventDefault();
+
+  const newData = {
+    name:newNameInput.value,
+    advice:newAdviceInput.value
+  }
+  fetch('http://localhost:3000/new_advice', {
+    method: "POST",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify(newData)
   })
-
+  newNameInput.value = '';
+  newAdviceInput.value = '';
 }
+
+

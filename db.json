@@ -14,6 +14,16 @@
       "name": "Jhon",
       "advice": "Advice 3",
       "id": 3
-    } 
+    },
+    {
+      "name": "Maxim",
+      "advice": "Be happy",
+      "id": 4
+    },
+    {
+      "name": "Angel",
+      "advice": "Tell the truth, or at least don't lie",
+      "id": 5
+    }
   ]
 }
