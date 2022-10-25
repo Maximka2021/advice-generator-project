@@ -1,3 +1,5 @@
+//maxim's branch
+
 const userAdvice = document.querySelector("#user-advice");
 const newAdviceInput = document.querySelector("#new-advice-input");
 const newNameInput = document.querySelector("#new-name-input");
