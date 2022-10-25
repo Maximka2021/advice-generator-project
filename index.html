@@ -6,9 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src=".//script.js"></script>
     <link rel="stylesheet" href=".//style.css">
-    <title>Weather App</title>
+    <title>Advice Generator</title>
 </head>
 <body>
-    
+    <h1 class='title'>Advice Generator</h1>
+    <!-- <div class="random-advice-container">
+        <h2 class="random-title">Random Advices</h2>
+        <p id="random-advice"></p>
+    </div> -->
+    <div class="user-advice-container">
+        <h2 class="user-title">Advices created by users</h2>
+        <p id="user-advice"></p>
+    </div>
+    <div class="input-container">
+        <form>
+            <label for="new-name-input">Name:</label>
+            <input type="text" class='input' id="new-name-input" required>
+            <br>
+            <textarea class="advice-input" id="new-advice-input" cols="55" rows="7" placeholder="Advice..." required></textarea>
+            <br>
+            <button class='submit-btn' id="submit-advice">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
