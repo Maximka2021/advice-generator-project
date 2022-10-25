@@ -15,19 +15,20 @@
         <p id="random-advice"></p>
     </div> -->
     <div class="user-advice-container">
-        <h2 class="user-title">Advices created by users</h2>
         <p id="user-advice"></p>
         <p id="author">By </p>
     </div>
-    <button id="btn-quote">New Advice</button>
+    <div class="btn-container">
+        <button id="btn-quote">New Advice</button>
+    </div>
     <div class="input-container">
-        <form>
+        <form action="GET">
             <label for="new-name-input">Name:</label>
-            <input type="text" class='input' id="new-name-input" required>
+            <input type="text" class='input' id="new-name-input" placeholder="Jhon Dow" required />
             <br>
             <textarea class="advice-input" id="new-advice-input" cols="55" rows="7" placeholder="Advice..." required></textarea>
             <br>
-            <button class='submit-btn' id="submit-advice">Submit</button>
+            <input type="submit" class='submit-btn' id="submit-advice">
         </form>
     </div>
 </body>

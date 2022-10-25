@@ -24,6 +24,11 @@
       "name": "Angel",
       "advice": "Tell the truth, or at least don't lie",
       "id": 5
+    },
+    {
+      "name": "MAx",
+      "advice": "Cool Advice",
+      "id": 6
     }
   ]
 }

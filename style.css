@@ -14,27 +14,6 @@ body{
     color:#E69A8DFF
 }
 
-/* .random-advice-container{
-    text-align: center;
-    width: 60%;
-    height: 150px;
-    background-color: #E69A8DFF;
-    color:#5F4B8BFF;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 15px;  
-} */
-
-.random-title{
-    padding-top: 35px;
-}
-
-/* #random-advice{
-    padding-top: 7px;
-    font-size: 1.9em;
-} */
-
 .user-advice-container{
     text-align: center;
     width: 60%;
@@ -52,7 +31,8 @@ body{
 }
 
 #user-advice{
-    padding-top: 7px;
+    padding-top: 5%;
+    padding-bottom: 2%;
     font-size: 1.9em;
 }
 
@@ -65,6 +45,30 @@ body{
     background-color:#E69A8DFF;
 }
 
+#btn-quote{
+    padding: 1% 2%;
+    margin-top: 1%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    outline-offset: 4px;
+    box-shadow: 0px 5px grey;
+    text-align: center;
+}
+
+.btn-container{
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#btn-quote:active{
+    box-shadow: 0px 2px darkslategrey;
+    transform: translateY(2px);
+}
+
 .input{
     height: 1.5rem;
     margin: 3% 0%;
@@ -74,7 +78,7 @@ body{
 .advice-input{
     resize: none;
     font-size: 1rem;
-}
+}   
 
 .submit-btn{
     padding: 2% 6%;
@@ -82,10 +86,11 @@ body{
     border: none;
     outline: none;
     cursor: pointer;
-    transition: .3s;
     border-radius: 15px;
+    box-shadow: 0px 5px grey;
 }
 
-.submit-btn:hover{
-    box-shadow: 3px 3px 1px black;
+.submit-btn:active{
+    box-shadow: 0px 2px darkslategrey;
+    transform:translateY(2px);
 }

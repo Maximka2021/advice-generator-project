@@ -21,7 +21,7 @@ function displayInfo(){
 }
 
 function displayAdvice(data){
-  const adviceArray = data.map(elem => elem.advice);
+  adviceArray = data.map(elem => elem.advice);
   const randomAdvice = adviceArray[Math.floor(Math.random()*adviceArray.length)];
   userAdvice.textContent = randomAdvice;
 
@@ -38,20 +38,32 @@ submitAdvice.addEventListener('click', saveAdvice)
 
 function saveAdvice(e){
   e.preventDefault();
-
-  const newData = {
-    name:newNameInput.value,
-    advice:newAdviceInput.value
+    if(isExist){
+      alert('This advice is already exist')
+  }else{
+      const newData = {
+          name:newNameInput.value,
+          advice:newAdviceInput.value
+        }
+        fetch('http://localhost:3000/new_advice', {
+          method: "POST",
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify(newData)
+        })
+        newNameInput.value = '';
+        newAdviceInput.value = '';
+    }
   }
-  fetch('http://localhost:3000/new_advice', {
-    method: "POST",
-    headers:{
-      'Content-Type':'application/json'
-    },
-    body: JSON.stringify(newData)
+
+function isExist(){
+  adviceArray.forEach(elem => {
+    if(newAdviceInput.value === elem) return true;
   })
-  newNameInput.value = '';
-  newAdviceInput.value = '';
+  return false;
 }
+
+
 
 
