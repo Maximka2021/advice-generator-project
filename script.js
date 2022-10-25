@@ -25,9 +25,8 @@ function displayUserAdvice(data) {
 
 submitAdvice.addEventListener("click", createNewAdvice);
 
-function createNewAdvice() {
-  console.log("Please enter a new Advice");
-
+function createNewAdvice(e) {
+  e.preventDefault()
   const newData = {
     name: newNameInput.value,
     advice: newAdviceInput.value,
