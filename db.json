@@ -1,11 +1,6 @@
 {
   "new_advice": [
     {
-      "id": 1,
-      "name": "maxim",
-      "advice": "Test"
-    },
-    {
       "name": "Bob",
       "advice": "New Advice",
       "id": 2
@@ -29,6 +24,11 @@
       "name": "MAx",
       "advice": "Cool Advice",
       "id": 6
+    },
+    {
+      "name": "maxim",
+      "advice": "asasduasaashoasdoasdaosdahs",
+      "id": 7
     }
   ]
 }
