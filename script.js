@@ -13,16 +13,31 @@ const newNameInput = document.querySelector("#new-name-input");
 const submitAdvice = document.querySelector("#submit-advice");
 const author = document.querySelector("#author");
 const allAdvicesContainer = document.querySelector(".all-advices-container");
-
 // shows random advice when page loads
 function fetchFunc() {
   fetch(url)
     .then((r) => r.json())
     .then((data) => {
       displayAdvice(data);
-      displayAll(data);
     });
 }
+
+function func(){
+  fetch(url)
+  .then((r) => r.json())
+  .then((data) => {
+    displayAll(data);
+    sortFunc(data)
+  });
+}
+
+function sortFunc(data){
+  data.map(() => {
+    data.sort((a, b) => b.likes - a.likes)
+  })
+}
+
+
 // shows random advice when page loads
 
 //shows random advcie when button is clicked
@@ -50,23 +65,23 @@ function displayName(elem) {
 
 //checks wether fields are empty or not
 submitAdvice.addEventListener("click", () => {
-  if(newNameInput.value === '' || newAdviceInput.value === '') {
-    alert('Fields cannot be empty')
-  }else{
-    checkLength()
+  if (newNameInput.value === "" || newAdviceInput.value === "") {
+    alert("Fields cannot be empty");
+  } else {
+    checkLength();
   }
 });
 //checks wether fields are empty or not
 
 //checks the length of the name and advice
-function checkLength(){
-  if(newNameInput.value.length < 5){
-    alert('Your name should be longer than 4 characters')
-  }else{
-    if(newAdviceInput.value.length <= 10){
-      alert('Your advice should be longer than 10 characters')
-    }else{
-      saveAdvice()
+function checkLength() {
+  if (newNameInput.value.length < 5) {
+    alert("Your name should be longer than 4 characters");
+  } else {
+    if (newAdviceInput.value.length <= 10) {
+      alert("Your advice should be longer than 10 characters");
+    } else {
+      saveAdvice();
     }
   }
 }
@@ -74,11 +89,11 @@ function checkLength(){
 
 //checks if advice is alreday exist and saves a new one
 function saveAdvice() {
-  console.log('Function is running')
+  console.log("Function is running");
   const newData = {
     name: newNameInput.value,
     advice: newAdviceInput.value,
-    likes: 0
+    likes: 0,
   };
   fetch(url, {
     method: "POST",
@@ -93,61 +108,61 @@ function saveAdvice() {
 }
 
 //checks if advice is alreday exist and saves a new one
-
+let num = 1;
 //dislays all advices and authors from json
 function displayAll(data) {
   data.forEach((elem) => {
-    const nameAndAdviceContainer = document.createElement("div");
-    const adviceTextContainer = document.createElement("p");
-    const nameTextContainer = document.createElement("p");
-    const likeBtn = document.createElement('button');
-    const likeNumber = document.createElement('p');
+    
+    function createContainer(){
+      num += 1;
+      const nameAndAdviceContainer = document.createElement("div");
+      const adviceTextContainer = document.createElement("p");
+      const nameTextContainer = document.createElement("p");
+      const likeBtn = document.createElement("button");
+      const likeNumber = document.createElement("p");
 
-    adviceTextContainer.className = "adviceTextContainer";
-    nameTextContainer.className = "nameTextContainer";
-    nameAndAdviceContainer.className = "nameAndAdviceContainer";
-    likeBtn.className = 'likeBtn';
-    likeNumber.className = 'likeNumber';
-
-    adviceTextContainer.textContent = `"${elem.advice}"`;
-    nameTextContainer.textContent = `-${elem.name}-`;
-    likeBtn.textContent = 'Like'
-    likeNumber.textContent = elem.likes;
-
-    nameAndAdviceContainer.append(adviceTextContainer, nameTextContainer, likeBtn, likeNumber);
-    document.body.append(nameAndAdviceContainer);
-
-    likeBtn.addEventListener('click', () => {
-   
-
-
-      addLike()
-    })
-      function addLike(){
-        let newLikes = parseInt(elem.likes) + 1
-        let newObj = {
-          likes: newLikes
-        }
-     console.log(newObj)
-      console.log(elem.id)
-      //debugger
-      fetch(`${url}/${elem.id}`, {
-        method:'PATCH',
-        header:{
-          'Content-Type':'application/json'
+      adviceTextContainer.className = "adviceTextContainer";
+      nameTextContainer.className = "nameTextContainer";
+      nameAndAdviceContainer.className = "nameAndAdviceContainer";
+      likeBtn.className = "likeBtn";
+      likeNumber.className = "likeNumber";
+  
+      adviceTextContainer.textContent = `"${elem.advice}"`;
+      nameTextContainer.textContent = `-${elem.name}-`;
+      likeBtn.textContent = "Like";
+      likeNumber.textContent = elem.likes;
+  
+      nameAndAdviceContainer.append(
+        adviceTextContainer,
+        nameTextContainer,
+        likeBtn,
+        likeNumber
+      );
+      document.body.append(nameAndAdviceContainer);
+      likeBtn.addEventListener("click", addLike);
+    }
+    if(num <= 10){
+      createContainer()
+    }
+    let like = elem.likes;
+    function addLike() {
+      like++;
+      console.log(like)
+      fetch(`${url}/${elem.id}`,{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newObj)
+        body: JSON.stringify({
+          likes: like
+        }),
       })
-      .then(r => r.json())
-      .then(data => console.log(data))
     }
   });
 }
 //dislays all advices and authors from json
 
-
-
-
+func()
 fetchFunc();
 
 
