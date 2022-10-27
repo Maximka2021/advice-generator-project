@@ -26,17 +26,11 @@ function func(){
   fetch(url)
   .then((r) => r.json())
   .then((data) => {
+    //console.log(data)
     displayAll(data);
     sortFunc(data)
   });
 }
-
-function sortFunc(data){
-  data.map(() => {
-    data.sort((a, b) => b.likes - a.likes)
-  })
-}
-
 
 // shows random advice when page loads
 
@@ -119,7 +113,7 @@ function displayAll(data) {
       const adviceTextContainer = document.createElement("p");
       const nameTextContainer = document.createElement("p");
       const likeBtn = document.createElement("button");
-      const likeNumber = document.createElement("p");
+      likeNumber = document.createElement("p");
 
       adviceTextContainer.className = "adviceTextContainer";
       nameTextContainer.className = "nameTextContainer";
@@ -147,7 +141,6 @@ function displayAll(data) {
     let like = elem.likes;
     function addLike() {
       like++;
-      console.log(like)
       fetch(`${url}/${elem.id}`,{
         method: "PATCH",
         headers: {
@@ -157,6 +150,8 @@ function displayAll(data) {
           likes: like
         }),
       })
+      .then(r => r.json())
+      .then(() => {likeNumber.textContent = elem.likes;})
     }
   });
 }
