@@ -1,34 +1,46 @@
 {
   "new_advice": [
     {
+      "id": 2,
       "name": "Bob",
       "advice": "New Advice",
-      "id": 2
+      "likes": 0
     },
     {
       "name": "Jhon",
       "advice": "Advice 3",
-      "id": 3
+      "id": 3,
+      "likes": 0
     },
     {
       "name": "Maxim",
       "advice": "Be happy",
-      "id": 4
+      "id": 4,
+      "likes": 0
     },
     {
       "name": "Angel",
       "advice": "Tell the truth, or at least don't lie",
-      "id": 5
+      "id": 5,
+      "likes": 0
     },
     {
       "name": "MAx",
       "advice": "Cool Advice",
-      "id": 6
+      "id": 6,
+      "likes": 0
     },
     {
-      "name": "maxim",
-      "advice": "asasduasaashoasdoasdaosdahs",
-      "id": 7
+      "name": "Jhon Dow",
+      "advice": "Stay positive",
+      "id": 7,
+      "likes": 0
+    },
+    {
+      "name": "Maxldjasd",
+      "advice": "a]sda]pdksdjahjsdh",
+      "likes": 0,
+      "id": 8
     }
   ]
 }

@@ -58,6 +58,7 @@ submitAdvice.addEventListener("click", () => {
 });
 //checks wether fields are empty or not
 
+//checks the length of the name and advice
 function checkLength(){
   if(newNameInput.value.length < 5){
     alert('Your name should be longer than 4 characters')
@@ -68,8 +69,8 @@ function checkLength(){
       saveAdvice()
     }
   }
-
 }
+//checks the length of the name and advice
 
 //checks if advice is alreday exist and saves a new one
 function saveAdvice() {
@@ -77,6 +78,7 @@ function saveAdvice() {
   const newData = {
     name: newNameInput.value,
     advice: newAdviceInput.value,
+    likes: 0
   };
   fetch(url, {
     method: "POST",
@@ -98,19 +100,53 @@ function displayAll(data) {
     const nameAndAdviceContainer = document.createElement("div");
     const adviceTextContainer = document.createElement("p");
     const nameTextContainer = document.createElement("p");
+    const likeBtn = document.createElement('button');
+    const likeNumber = document.createElement('p');
 
     adviceTextContainer.className = "adviceTextContainer";
     nameTextContainer.className = "nameTextContainer";
     nameAndAdviceContainer.className = "nameAndAdviceContainer";
+    likeBtn.className = 'likeBtn';
+    likeNumber.className = 'likeNumber';
 
     adviceTextContainer.textContent = `"${elem.advice}"`;
     nameTextContainer.textContent = `-${elem.name}-`;
+    likeBtn.textContent = 'Like'
+    likeNumber.textContent = elem.likes;
 
-    nameAndAdviceContainer.append(adviceTextContainer, nameTextContainer);
+    nameAndAdviceContainer.append(adviceTextContainer, nameTextContainer, likeBtn, likeNumber);
     document.body.append(nameAndAdviceContainer);
+
+    likeBtn.addEventListener('click', () => {
+   
+
+
+      addLike()
+    })
+      function addLike(){
+        let newLikes = parseInt(elem.likes) + 1
+        let newObj = {
+          likes: newLikes
+        }
+     console.log(newObj)
+      console.log(elem.id)
+      //debugger
+      fetch(`${url}/${elem.id}`, {
+        method:'PATCH',
+        header:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify(newObj)
+      })
+      .then(r => r.json())
+      .then(data => console.log(data))
+    }
   });
 }
 //dislays all advices and authors from json
+
+
+
 
 fetchFunc();
 
